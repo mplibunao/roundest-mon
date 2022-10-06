@@ -1,4 +1,4 @@
 export const isServer = () => {
-	return process.browser
-	//return typeof window === 'undefined'
+	//return process.browser
+	return typeof window === 'undefined'
 }

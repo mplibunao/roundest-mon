@@ -1,8 +1,13 @@
+import { trpc } from '@/utils/trpc'
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
 
 const Home: NextPage = () => {
+	const { data, isLoading } = trpc.useQuery(['hello', { text: 'MP' }])
+
+	if (isLoading) return <div>loading...</div>
+
+	if (data) return <div>{data.greeting}</div>
+
 	return (
 		<div className='flex-col justify-center w-screen h-screen flex items-center'>
 			<div className='text-2xl'>Which Pokemon is rounder?</div>

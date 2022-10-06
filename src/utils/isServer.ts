@@ -1,1 +1,4 @@
-export const isServer = () => typeof window === 'undefined'
+export const isServer = () => {
+	return process.browser
+	//return typeof window === 'undefined'
+}

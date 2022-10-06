@@ -35,6 +35,8 @@ const Home: NextPage = () => {
 						src={firstPokemon.data?.sprites.front_default as string}
 						className='w-full'
 						alt='1st pokemon image to vote on'
+						height={256}
+						width={256}
 					/>
 					<div className='capitalize text-xl text-center mt-[-2rem]'>
 						{firstPokemon.data?.name}
@@ -50,8 +52,9 @@ const Home: NextPage = () => {
 				<div className='w-64 h-64 flex flex-col items-center'>
 					<Image
 						src={secondPokemon.data?.sprites.front_default as string}
-						className='w-full'
 						alt='2nd pokemon image to vote on'
+						height={256}
+						width={256}
 					/>
 					<div className='capitalize text-xl text-center mt-[-2rem]'>
 						{secondPokemon.data?.name}

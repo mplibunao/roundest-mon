@@ -71,6 +71,7 @@ export const PokemonListing = ({
 				alt='1st pokemon image to vote on'
 				height={256}
 				width={256}
+				layout='fixed'
 			/>
 			<div className='capitalize text-xl text-center mt-[-2rem]'>
 				{pokemon.name}

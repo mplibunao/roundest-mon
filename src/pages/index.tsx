@@ -28,9 +28,11 @@ const Home: NextPage = () => {
 	}
 
 	return (
-		<div className='flex-col justify-center w-screen h-screen flex items-center'>
+		<div className='flex-col justify-center w-screen h-screen flex items-center relative'>
 			<div className='text-2xl'>Which Pokemon is rounder?</div>
+
 			<div className='p-2' />
+
 			<div className='border rounded p-8 flex justify-between max-w-2xl items-center'>
 				{!firstPokemon.isLoading &&
 					firstPokemon.data &&
@@ -49,6 +51,10 @@ const Home: NextPage = () => {
 						</>
 					)}
 				<div className='p-2' />
+			</div>
+
+			<div className='absolute bottom-0 w-full text-xl text-center pb-2'>
+				<a href='https://github.com/mplibunao/roundest-mon'>Github</a>
 			</div>
 		</div>
 	)
@@ -73,9 +79,11 @@ export const PokemonListing = ({
 				width={256}
 				layout='fixed'
 			/>
+
 			<div className='capitalize text-xl text-center mt-[-2rem]'>
 				{pokemon.name}
 			</div>
+
 			<button
 				className='inline-flex items-center rounded border border-gray-300 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
 				onClick={() => vote()}

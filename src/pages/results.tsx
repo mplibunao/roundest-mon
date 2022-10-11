@@ -2,7 +2,6 @@ import { GetStaticProps } from 'next'
 import { prisma } from '@/backend/utils/prisma'
 import { AsyncReturnType } from '@/utils/ts-bs'
 import Image from 'next/image'
-import { MAX_DEX_ID } from '@/constants'
 
 type PokemonQueryResult = AsyncReturnType<typeof getPokemonInOrder>
 

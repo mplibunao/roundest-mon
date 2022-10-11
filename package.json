@@ -8,6 +8,7 @@
 		"start": "next start",
 		"lint": "next lint",
 		"ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\"",
+		"postinstall": "prisma generate",
 		"backfill": "p ts-node ./scripts/fill-db.ts"
 	},
 	"dependencies": {

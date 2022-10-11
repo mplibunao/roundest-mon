@@ -17,13 +17,15 @@ export default function ResultsPage({
 			<h2 className='text-2xl p-4'>ResultsPage</h2>
 
 			<div className='flex flex-col max-w-2xl w-full border'>
-				{pokemon.map((currentPokemon, rank) => (
-					<PokemonListing
-						pokemon={currentPokemon}
-						key={currentPokemon.id}
-						rank={rank + 1}
-					/>
-				))}
+				{pokemon
+					.sort((a, b) => generateCountPercent(b) - generateCountPercent(a))
+					.map((currentPokemon, rank) => (
+						<PokemonListing
+							pokemon={currentPokemon}
+							key={currentPokemon.id}
+							rank={rank + 1}
+						/>
+					))}
 			</div>
 		</div>
 	)

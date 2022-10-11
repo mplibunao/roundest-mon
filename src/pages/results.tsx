@@ -75,7 +75,9 @@ const PokemonListing = ({ pokemon, rank }: PokemonListingProps) => {
 				/>
 				<div className='capitalize'>{pokemon.name}</div>
 			</div>
-			<div className='pr-4'>{`${generateCountPercent(pokemon)}%`}</div>
+			<div className='pr-4'>{`${generateCountPercent(pokemon).toFixed(
+				2
+			)}%`}</div>
 		</div>
 	)
 }

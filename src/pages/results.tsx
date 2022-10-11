@@ -41,7 +41,7 @@ const getPokemonInOrder = async () => {
 			_count: {
 				select: {
 					voteFor: true,
-					votesAgainst: true,
+					voteAgainst: true,
 				},
 			},
 		},
@@ -83,11 +83,11 @@ const PokemonListing = ({ pokemon, rank }: PokemonListingProps) => {
 }
 
 const generateCountPercent = (pokemon: PokemonQueryResult[number]) => {
-	const { voteFor, votesAgainst } = pokemon._count
+	const { voteFor, voteAgainst } = pokemon._count
 
-	if (voteFor + votesAgainst === 0) {
+	if (voteFor + voteAgainst === 0) {
 		return 0
 	}
 
-	return (voteFor / (votesAgainst + voteFor)) * 100
+	return (voteFor / (voteAgainst + voteFor)) * 100
 }

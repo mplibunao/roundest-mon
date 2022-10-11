@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next'
 import { prisma } from '@/backend/utils/prisma'
 import { AsyncReturnType } from '@/utils/ts-bs'
 import Image from 'next/image'
+import { MAX_DEX_ID } from '@/constants'
 
 type PokemonQueryResult = AsyncReturnType<typeof getPokemonInOrder>
 
@@ -62,15 +63,28 @@ interface PokemonListingProps {
 
 const PokemonListing = ({ pokemon, rank }: PokemonListingProps) => {
 	return (
-		<div className='flex border-b p-2 items-center'>
-			<Image
-				src={pokemon.spriteUrl}
-				width={64}
-				height={64}
-				alt={`${pokemon.name} is rank ${rank} in roundness`}
-				layout='fixed'
-			/>
-			<div className='capitalize'>{pokemon.name}</div>
+		<div className='flex border-b p-2 items-center justify-between'>
+			<div className='flex items-center'>
+				<Image
+					src={pokemon.spriteUrl}
+					width={64}
+					height={64}
+					alt={`${pokemon.name} is rank ${rank} in roundness`}
+					layout='fixed'
+				/>
+				<div className='capitalize'>{pokemon.name}</div>
+			</div>
+			<div className='pr-4'>{`${generateCountPercent(pokemon)}%`}</div>
 		</div>
 	)
+}
+
+const generateCountPercent = (pokemon: PokemonQueryResult[number]) => {
+	const { voteFor, votesAgainst } = pokemon._count
+
+	if (voteFor + votesAgainst === 0) {
+		return 0
+	}
+
+	return (voteFor / (votesAgainst + voteFor)) * 100
 }

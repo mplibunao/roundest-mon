@@ -2,6 +2,7 @@ import { getOptionsForVote } from '@/utils/getRandomPokemon'
 import { trpc } from '@/utils/trpc'
 import type { NextPage } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import { inferQueryResponse } from './api/trpc/[trpc]'
 
@@ -28,33 +29,55 @@ const Home: NextPage = () => {
 	}
 
 	return (
-		<div className='flex-col justify-center w-screen h-screen flex items-center relative'>
-			<div className='text-2xl'>Which Pokemon is rounder?</div>
-
-			<div className='p-2' />
+		<div className='flex-col justify-between w-screen h-screen flex items-center relative'>
+			<div className='text-2xl pt-8'>Which Pokemon is rounder?</div>
 
 			<div className='border rounded p-8 flex justify-between max-w-2xl items-center'>
-				{!firstPokemon.isLoading &&
-					firstPokemon.data &&
-					!secondPokemon.isLoading &&
-					secondPokemon.data && (
-						<>
-							<PokemonListing
-								pokemon={firstPokemon.data}
-								vote={() => voteForRoundest(first)}
-							/>
-							<div className='p-8'>Vs</div>
-							<PokemonListing
-								pokemon={secondPokemon.data}
-								vote={() => voteForRoundest(second)}
-							/>
-						</>
-					)}
+				{firstPokemon.data && secondPokemon.data ? (
+					<>
+						<PokemonListing
+							pokemon={firstPokemon.data}
+							vote={() => voteForRoundest(first)}
+						/>
+						<div className='p-8'>Vs</div>
+						<PokemonListing
+							pokemon={secondPokemon.data}
+							vote={() => voteForRoundest(second)}
+						/>
+					</>
+				) : (
+					<Image src='/rings.svg' width={192} height={192} alt='loading...' />
+				)}
+
 				<div className='p-2' />
 			</div>
 
-			<div className='absolute bottom-0 w-full text-xl text-center pb-2'>
-				<a href='https://github.com/mplibunao/roundest-mon'>Github</a>
+			<div className='w-full text-xl text-center pb-2'>
+				<Link
+					href='https://twitter.com/mpradorbrandy'
+					passHref
+					target='_blank'
+					rel='noopener noreferrer'
+				>
+					<a>Twitter</a>
+				</Link>
+
+				<span className='p-4'>-</span>
+
+				<Link
+					href='https://github.com/mplibunao/roundest-mon'
+					target='_blank'
+					rel='noopener noreferrer'
+					passHref
+				>
+					<a>Github</a>
+				</Link>
+
+				<span className='p-4'>-</span>
+
+				<Link href='/results' passHref>
+					<a>Results</a>
+				</Link>
 			</div>
 		</div>
 	)

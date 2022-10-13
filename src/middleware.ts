@@ -9,7 +9,7 @@ const ratelimit = new Ratelimit({
 
 export default async function middleware(
 	request: NextRequest,
-	event: NextFetchEvent
+	_event: NextFetchEvent
 ): Promise<Response | undefined> {
 	const ip = request.ip ?? '127.0.0.1'
 
@@ -20,9 +20,7 @@ export default async function middleware(
 	const { success, pending, limit, reset, remaining } = await ratelimit.limit(
 		`mw_${ip}`
 	)
-	event.waitUntil(pending)
-
-	console.log('success?', success)
+	//event.waitUntil(pending)
 
 	const res = success
 		? NextResponse.next(request)

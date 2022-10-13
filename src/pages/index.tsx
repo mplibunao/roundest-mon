@@ -1,5 +1,7 @@
+import SEO from '@/components/SEO'
 import { trpc } from '@/utils/trpc'
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -42,6 +44,7 @@ const Home: NextPage = () => {
 
 	return (
 		<div className='flex-col justify-between w-screen h-screen flex items-center relative'>
+			<SEO title='Voting Page' />
 			<div className='text-2xl pt-8 text-center'>Which Pokemon is rounder?</div>
 
 			{pokemonPair ? (
@@ -50,12 +53,14 @@ const Home: NextPage = () => {
 						pokemon={pokemonPair.firstPokemon}
 						vote={() => voteForRoundest(pokemonPair.firstPokemon.id)}
 						disabled={fetchingNext}
+						alt='1st pokemon image to vote on'
 					/>
 					<div className='p-8 italic text-xl'>or</div>
 					<PokemonListing
 						pokemon={pokemonPair.secondPokemon}
 						vote={() => voteForRoundest(pokemonPair.secondPokemon.id)}
 						disabled={fetchingNext}
+						alt='2nd pokemon image to vote on'
 					/>
 					<div className='p-2' />
 				</div>
@@ -99,12 +104,14 @@ interface PokemonListingProps {
 	children?: React.ReactNode
 	vote: () => void
 	disabled: boolean
+	alt: string
 }
 
 export const PokemonListing = ({
 	pokemon,
 	vote,
 	disabled,
+	alt,
 }: PokemonListingProps): JSX.Element => {
 	return (
 		<div
@@ -118,7 +125,7 @@ export const PokemonListing = ({
 
 			<Image
 				src={pokemon.spriteUrl}
-				alt='1st pokemon image to vote on'
+				alt={alt}
 				height={256}
 				width={256}
 				layout='fixed'

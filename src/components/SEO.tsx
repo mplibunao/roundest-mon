@@ -1,5 +1,5 @@
 import { getUrl } from '@/utils/getUrl'
-import { Helmet } from 'react-helmet'
+import Head from 'next/head'
 
 export interface SEOProps {
 	title?: string
@@ -16,26 +16,47 @@ export const SEO = ({ title = '', description }: SEOProps): JSX.Element => {
 	const image = `${siteUrl}/spheal.png`
 
 	return (
-		<Helmet htmlAttributes={{ lang: 'en' }} title={`${title} | ${siteTitle}`}>
-			<meta name='description' content={description || siteDescription} />
-			<meta name='image' content={image} />
+		<Head>
+			<title>{`${title} | ${siteTitle}`}</title>
+			<meta
+				name='description'
+				content={description || siteDescription}
+				key='description'
+			/>
+			<meta name='image' content={image} key='image' />
 
 			{/* facebook cards */}
-			<meta property='og:url' content={siteUrl} />
-			<meta property='og:type' content='website' />
-			<meta property='og:title' content={siteTitle} />
-			<meta property='og:description' content={siteDescription} />
-			<meta property='og:image' content={`${image}`} />
-			<meta property='og:image:width' content='400' />
-			<meta property='og:image:height' content='300' />
+			<meta property='og:url' content={siteUrl} key='og:url' />
+			<meta property='og:type' content='website' key='og:type' />
+			<meta property='og:title' content={siteTitle} key='og:title' />
+			<meta
+				property='og:description'
+				content={siteDescription}
+				key='og:description'
+			/>
+			<meta property='og:image' content={`${image}`} key='og:image' />
+			<meta property='og:image:width' content='400' key='og:image:width' />
+			<meta property='og:image:height' content='300' key='og:image:height' />
 
 			{/* twitter card */}
-			<meta name='twitter:card' content='summary_large_image' />
-			<meta name='twitter:creator' content={twitterUsername} />
-			<meta name='twitter:title' content={siteTitle} />
-			<meta name='twitter:description' content={siteDescription} />
-			<meta name='twitter:image' content={`${image}`} />
-		</Helmet>
+			<meta
+				name='twitter:card'
+				content='summary_large_image'
+				key='twitter:card'
+			/>
+			<meta
+				name='twitter:creator'
+				content={twitterUsername}
+				key='twitter:creator'
+			/>
+			<meta name='twitter:title' content={siteTitle} key='twitter:title' />
+			<meta
+				name='twitter:description'
+				content={siteDescription}
+				key='twitter:description'
+			/>
+			<meta name='twitter:image' content={`${image}`} key='twitter:image' />
+		</Head>
 	)
 }
 

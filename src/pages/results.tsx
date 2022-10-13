@@ -89,6 +89,7 @@ const PokemonListing = ({ pokemon, rank }: PokemonListingProps) => {
 						height={64}
 						alt={`${pokemon.name} is rank ${rank} in roundness`}
 						layout='fixed'
+						className='pixelated'
 					/>
 					<div className='pl-2 capitalize'>{pokemon.name}</div>
 				</div>

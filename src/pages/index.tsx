@@ -122,6 +122,7 @@ export const PokemonListing = ({
 				height={256}
 				width={256}
 				layout='fixed'
+				className='pixelated'
 			/>
 
 			<button

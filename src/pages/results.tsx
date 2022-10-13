@@ -15,6 +15,8 @@ export default function ResultsPage({
 	return (
 		<div className='flex flex-col items-center'>
 			<h2 className='text-2xl p-4'>ResultsPage</h2>
+		<>
+			<SEO
 
 			<div className='flex flex-col max-w-2xl w-full border'>
 				{pokemon
@@ -28,6 +30,7 @@ export default function ResultsPage({
 					))}
 			</div>
 		</div>
+		</>
 	)
 }
 

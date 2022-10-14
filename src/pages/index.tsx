@@ -1,7 +1,6 @@
 import SEO from '@/components/SEO'
 import { trpc } from '@/utils/trpc'
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'

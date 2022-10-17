@@ -70,7 +70,6 @@ const Home: NextPage = () => {
 			<div className='w-full text-xl text-center pb-2'>
 				<Link
 					href='https://twitter.com/mpradorbrandy'
-					passHref
 					target='_blank'
 					rel='noopener noreferrer'
 				>
@@ -83,14 +82,13 @@ const Home: NextPage = () => {
 					href='https://github.com/mplibunao/roundest-mon'
 					target='_blank'
 					rel='noopener noreferrer'
-					passHref
 				>
 					<a>Github</a>
 				</Link>
 
 				<span className='p-1'>-</span>
 
-				<Link href='/results' passHref>
+				<Link href='/results'>
 					<a>Results</a>
 				</Link>
 			</div>

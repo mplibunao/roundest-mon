@@ -37,6 +37,8 @@ export const SEO = ({ title = '', description }: SEOProps): JSX.Element => {
 			<meta property='og:image' content={`${image}`} key='og:image' />
 			<meta property='og:image:width' content='400' key='og:image:width' />
 			<meta property='og:image:height' content='300' key='og:image:height' />
+			<meta key='og_locale' property='og:locale' content='en_IE' />
+			<meta key='og_site_name' property='og:site_name' content={siteTitle} />
 
 			{/* twitter card */}
 			<meta
@@ -55,7 +57,11 @@ export const SEO = ({ title = '', description }: SEOProps): JSX.Element => {
 				content={siteDescription}
 				key='twitter:description'
 			/>
+			<meta key='twitter:site' name='twitter:site' content={twitterUsername} />
 			<meta name='twitter:image' content={`${image}`} key='twitter:image' />
+
+			<link rel='canonical' href={siteUrl} />
+			<link rel='shortcut icon' href='/favicon.ico' />
 		</Head>
 	)
 }
